@@ -1,8 +1,8 @@
 
-let title;
-let author;
-let pages;
-let read;
+let title
+let author
+let pages
+let read
 let unread
 let complete
 let readC
@@ -24,6 +24,10 @@ let myLibrary = [];
 let sectionCreate = document.createElement("div")
 
 
+
+
+
+
 function book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -42,6 +46,7 @@ submitB.addEventListener ("click", function addBookToLibrary(event){
     newBook.read = readB.checked;
     myLibrary.push(newBook);
     console.log(myLibrary);
+    console.log(myLibrary.indexOf(newBook));
     titleB.value = authorB.value = pageB.value = "";
     bookUpdate();
     
@@ -55,16 +60,30 @@ function bookUpdate(){
         
         let sectionCreate = document.createElement("div");
         sectionCreate.classList.add("BookList");
+        sectionCreate.id = myLibrary.indexOf(element);
         sectionCreate.innerHTML = 
             "<h4>Title:</h4>" + element.title + "<p>" +
             "<h4>Author:</h4>" + element.author + "<p>" +
             "<h4>Pages:</h4>" + element.pages + "<p>" +
-            "<h4>Have you read it?</h4>" + element.read + "<p>" +
-            "<button>delete book</button>";
-        document.querySelector("button").classList.add("deletebtn");
+            "<h4>Have you read it?</h4>" + element.read + "<p>"
         bookArea.appendChild(sectionCreate);
-    });
-    
+        let deleteBtn = document.createElement("button");
+        deleteBtn.textContent = "Delete Book?";
+        sectionCreate.appendChild(deleteBtn);
+        deleteBtn.onclick = (evt) => {
+            evt.preventDefault();
+            sectionCreate.parentNode.removeChild(sectionCreate);
+            
 
-    /*bookArea.appendChild(sectionCreate)*/
+        };
+        /*
+        let deleteBTN = document.getElementById("deleterS");
+        let bookiD = e.current
+        deleteBTN.addEventListener("click", removeCard());
+        function removeCard(){
+            myLibrary = myLibrary.filter(newBook => newBook.id !== id);}*/
+        
+    });
 }
+
+
