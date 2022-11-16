@@ -65,14 +65,43 @@ function bookUpdate(){
             "<h4>Title:</h4>" + element.title + "<p>" +
             "<h4>Author:</h4>" + element.author + "<p>" +
             "<h4>Pages:</h4>" + element.pages + "<p>" +
-            "<h4>Have you read it?</h4>" + element.read + "<p>"
-        bookArea.appendChild(sectionCreate);
-        let deleteBtn = document.createElement("button");
+            "<h4>Have you read it?</h4>" + element.read + "<p>";
+            bookArea.appendChild(sectionCreate);
+            let deleteBtn = document.createElement("button");
+            deleteBtn.textContent = "Delete Book?";
+            deleteBtn.id = sectionCreate.id;
+            console.log(deleteBtn.id);
+            let deleteID = deleteBtn.id;
+            sectionCreate.appendChild(deleteBtn);
+            let deleteBTN = document.getElementById(deleteID);
+            deleteBTN.addEventListener("click", e => removeCard(e, deleteID));
+            function removeCard(e){
+                e.preventDefault();
+                let index = deleteID;
+                myLibrary.splice(index, 1);
+                bookUpdate();
+            };
+            
+            //deleteBtn.addEventListener("click", removeCard());
+            /*function removeCard(e, id){
+                e.preventDefault();
+                let index = myLibrary.findIndex (book => book.id === id);
+                myLibrary.splice(index, 1);
+                bookUpdate(); 
+            };*/
+        
+    });
+}
+
+
+
+        /*let deleteBtn = document.createElement("button");
         deleteBtn.textContent = "Delete Book?";
         sectionCreate.appendChild(deleteBtn);
         deleteBtn.onclick = (evt) => {
             evt.preventDefault();
-            sectionCreate.parentNode.removeChild(sectionCreate);
+            function removeCard ()
+
             
 
         };
@@ -82,8 +111,3 @@ function bookUpdate(){
         deleteBTN.addEventListener("click", removeCard());
         function removeCard(){
             myLibrary = myLibrary.filter(newBook => newBook.id !== id);}*/
-        
-    });
-}
-
-
