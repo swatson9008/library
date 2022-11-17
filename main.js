@@ -64,9 +64,21 @@ function bookUpdate(){
         sectionCreate.innerHTML = 
             "<h4>Title:</h4>" + element.title + "<p>" +
             "<h4>Author:</h4>" + element.author + "<p>" +
-            "<h4>Pages:</h4>" + element.pages + "<p>" +
-            "<h4>Have you read it?</h4>" + element.read + "<p>";
+            "<h4>Pages:</h4>" + element.pages + "<p>";
             bookArea.appendChild(sectionCreate);
+            if (element.read.value === true) {
+                let trueClass = document.createElement("div");
+                trueClass.classList.add("trueClass");
+                trueClass.innerHTML =
+                "Read <p>";
+                sectionCreate.appendChild(trueClass);}
+            else {
+                let falseClass = document.createElement("div");
+                falseClass.classList.add("falseClass");
+                falseClass.innerHTML =
+                "Unread <p>";
+                sectionCreate.appendChild(falseClass);
+            };
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "Delete Book?";
             deleteBtn.id = sectionCreate.id;
