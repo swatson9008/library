@@ -61,12 +61,14 @@ function bookUpdate(){
         let sectionCreate = document.createElement("div");
         sectionCreate.classList.add("BookList");
         sectionCreate.id = myLibrary.indexOf(element);
+        sectionID = sectionCreate.id;
+        console.log(myLibrary[sectionID].read);
         sectionCreate.innerHTML = 
             "<h4>Title:</h4>" + element.title + "<p>" +
             "<h4>Author:</h4>" + element.author + "<p>" +
             "<h4>Pages:</h4>" + element.pages + "<p>";
             bookArea.appendChild(sectionCreate);
-            if (element.read.value === true) {
+            if (element.read === true) {
                 let trueClass = document.createElement("div");
                 trueClass.classList.add("trueClass");
                 trueClass.innerHTML =
@@ -76,8 +78,17 @@ function bookUpdate(){
                 let falseClass = document.createElement("div");
                 falseClass.classList.add("falseClass");
                 falseClass.innerHTML =
-                "Unread <p>";
+                "Unread <p> Did you finish?" +
+                "<input type='checkbox' id='readCheck'>";
                 sectionCreate.appendChild(falseClass);
+                let readCheck = document.getElementById("readCheck");
+                readCheck.addEventListener("click", e => removeCheck(e, sectionID));
+                function removeCheck(e) {
+                    e.preventDefault();
+                    myLibrary[sectionID].read = !(myLibrary[sectionID].read);
+                    console.log(myLibrary[sectionID].read);
+                    bookUpdate();
+                };
             };
             let deleteBtn = document.createElement("button");
             deleteBtn.textContent = "Delete Book?";
@@ -86,7 +97,7 @@ function bookUpdate(){
             let deleteID = deleteBtn.id;
             sectionCreate.appendChild(deleteBtn);
             let deleteBTN = document.getElementById(deleteID);
-            deleteBTN.addEventListener("click", e => removeCard(e, deleteID));
+            deleteBTN.addEventListener("submit", e => removeCard(e, deleteID));
             function removeCard(e){
                 e.preventDefault();
                 let index = deleteID;
