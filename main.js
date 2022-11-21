@@ -72,7 +72,7 @@ function bookUpdate(){
                 let trueClass = document.createElement("div");
                 trueClass.classList.add("trueClass");
                 trueClass.innerHTML =
-                "Read <p>";
+                "Finished! <p>";
                 sectionCreate.appendChild(trueClass);}
             else {
                 let falseClass = document.createElement("div");
