@@ -84,7 +84,8 @@ function bookUpdate(){
                 let readCheck = document.getElementById("readCheck");
                 readCheck.addEventListener("click", e => removeCheck(e, sectionID));
                 function removeCheck(e) {
-                    e.preventDefault();
+                    
+                    e.stopPropagation();
                     myLibrary[sectionID].read = !(myLibrary[sectionID].read);
                     console.log(myLibrary[sectionID].read);
                     bookUpdate();
@@ -97,9 +98,10 @@ function bookUpdate(){
             let deleteID = deleteBtn.id;
             sectionCreate.appendChild(deleteBtn);
             let deleteBTN = document.getElementById(deleteID);
-            deleteBTN.addEventListener("submit", e => removeCard(e, deleteID));
+            deleteBTN.addEventListener("click", e => removeCard(e, deleteID));
             function removeCard(e){
-                e.preventDefault();
+               
+                e.stopPropagation();
                 let index = deleteID;
                 myLibrary.splice(index, 1);
                 bookUpdate();
