@@ -107,32 +107,10 @@ function bookUpdate(){
                 bookUpdate();
             };
             
-            //deleteBtn.addEventListener("click", removeCard());
-            /*function removeCard(e, id){
-                e.preventDefault();
-                let index = myLibrary.findIndex (book => book.id === id);
-                myLibrary.splice(index, 1);
-                bookUpdate(); 
-            };*/
+           
         
     });
 }
 
 
 
-        /*let deleteBtn = document.createElement("button");
-        deleteBtn.textContent = "Delete Book?";
-        sectionCreate.appendChild(deleteBtn);
-        deleteBtn.onclick = (evt) => {
-            evt.preventDefault();
-            function removeCard ()
-
-            
-
-        };
-        /*
-        let deleteBTN = document.getElementById("deleterS");
-        let bookiD = e.current
-        deleteBTN.addEventListener("click", removeCard());
-        function removeCard(){
-            myLibrary = myLibrary.filter(newBook => newBook.id !== id);}*/
