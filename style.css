@@ -29,3 +29,11 @@ form {
     padding-bottom: 25px;
     border-radius: 10px;
 }
+
+#bookT:invalid:required {
+    background-color: rgb(200, 202, 164);
+}
+
+#bookT:valid {
+    background-color: white;
+}

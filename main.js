@@ -39,7 +39,9 @@ class book {
 }
 
 
-submitB.addEventListener ("click", function addBookToLibrary(event){
+document.querySelector("form").addEventListener("submit", (event) => addBookToLibrary(event));
+
+function addBookToLibrary(event){
     event.preventDefault();
     newBook = Object.create(book);
     newBook.title = titleB.value;
@@ -54,7 +56,7 @@ submitB.addEventListener ("click", function addBookToLibrary(event){
     
 
     
-});
+};
 
 function bookUpdate(){
     bookArea.innerHTML = "";
